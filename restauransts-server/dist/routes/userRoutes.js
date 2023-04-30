@@ -40,7 +40,7 @@ router.put('/:id', (req, res) => __awaiter(void 0, void 0, void 0, function* () 
         const { id } = req.params;
         const updatedUser = yield userRepository.update(id, user);
         if (!updatedUser) {
-            return res.status(404).send('User not found');
+            return res.status(404).send('User with id not found');
         }
         res.json(updatedUser);
     }
