@@ -3,6 +3,7 @@ import bodyParser from 'body-parser';
 import cors from 'cors';
 import { connect } from './db';
 import userRoutes from './routes/userRoutes';
+import restaurantsRoutes from './routes/restaurantsRoutes';
 
 class App {
   public app: Application;
@@ -22,6 +23,7 @@ class App {
   private routes(): void {
     // set up routes
     this.app.use('/users', userRoutes);
+    this.app.use('/restaurants', restaurantsRoutes);
   }
 }
 

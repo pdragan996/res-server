@@ -8,6 +8,7 @@ const body_parser_1 = __importDefault(require("body-parser"));
 const cors_1 = __importDefault(require("cors"));
 const db_1 = require("./db");
 const userRoutes_1 = __importDefault(require("./routes/userRoutes"));
+const restaurantsRoutes_1 = __importDefault(require("./routes/restaurantsRoutes"));
 class App {
     constructor() {
         this.app = (0, express_1.default)();
@@ -22,6 +23,7 @@ class App {
     routes() {
         // set up routes
         this.app.use('/users', userRoutes_1.default);
+        this.app.use('/restaurants', restaurantsRoutes_1.default);
     }
 }
 // create an instance of the app
