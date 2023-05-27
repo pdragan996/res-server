@@ -1,8 +1,9 @@
 import bcrypt from 'bcrypt';
 import { NextFunction, Request, Response, Router } from 'express';
 import { APP_ERROR_MESSAGES, USER_ERROR_MESSAGES } from '../error-handling/error.messages';
-import { saltRounds, User, UserModel } from '../models/user';
+import { User, UserModel } from '../models/user';
 import { UserRepository } from '../repositories/userRepository';
+import { saltRounds } from '../shared/constants';
 
 const router = Router();
 const userRepository = new UserRepository();

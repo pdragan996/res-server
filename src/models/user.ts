@@ -1,7 +1,4 @@
 import mongoose from 'mongoose';
-import bcrypt from 'bcrypt';
-
-export const saltRounds = 10;
 
 export interface User extends mongoose.Document {
   name: string;
