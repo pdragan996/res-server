@@ -9,6 +9,10 @@ export class UserRepository {
     return UserModel.findById(id);
   }
 
+  async getByEmail(email: string): Promise<User | null> {
+    return UserModel.findOne({"email": email});
+  }
+
   async create(user: User): Promise<User> {
     const newUser = new UserModel(user);
     return newUser.save();

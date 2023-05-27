@@ -22,6 +22,11 @@ class UserRepository {
             return user_1.UserModel.findById(id);
         });
     }
+    getByEmail(email) {
+        return __awaiter(this, void 0, void 0, function* () {
+            return user_1.UserModel.findOne({ "email": email });
+        });
+    }
     create(user) {
         return __awaiter(this, void 0, void 0, function* () {
             const newUser = new user_1.UserModel(user);
