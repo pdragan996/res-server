@@ -13,6 +13,10 @@ export class UserRepository {
     return UserModel.findOne({"email": email});
   }
 
+  async getByUsername(username: string): Promise<User | null> {
+    return UserModel.findOne({"username": username});
+  }
+
   async create(user: User): Promise<User> {
     const newUser = new UserModel(user);
     return newUser.save();

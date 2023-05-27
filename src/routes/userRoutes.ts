@@ -20,12 +20,17 @@ router.get('/', async (req: Request, res: Response) => {
 
 router.post('/', async (req: Request, res: Response, next: NextFunction) => {
   try {
-    const {name, email, password, isAdmin, isSuperAdmin} = req.body;
+    const {name, email, password, username, isAdmin, isUserSuperAdmin} = req.body;
 
     const matchUser = await userRepository.getByEmail(email);
+    const usernameExists = await userRepository.getByUsername(username);
 
     if (!!matchUser) {
       return res.status(522).send(USER_ERROR_MESSAGES.USER_EXISTS);
+    }
+
+    if (!!usernameExists) {
+      return res.status(522).send(USER_ERROR_MESSAGES.USERNAME_EXISTS);
     }
 
     bcrypt.hash(password, saltRounds)
@@ -35,8 +40,9 @@ router.post('/', async (req: Request, res: Response, next: NextFunction) => {
           name,
           email,
           password: hash,
+          username,
           isAdmin,
-          isSuperAdmin
+          canCreateAdmin: isUserSuperAdmin
         });
       const newUser = userRepository.create(user)
       .then((user: User) => res.json(user))
