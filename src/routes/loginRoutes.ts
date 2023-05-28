@@ -7,7 +7,7 @@ import bcrypt from 'bcrypt';
 const router = Router();
 const userRepository = new UserRepository();
 
-router.post('/login', async (req: Request, res: Response, next: NextFunction) => {
+router.post('/', async (req: Request, res: Response, next: NextFunction) => {
   try {
     const {email, password} = req.body;
 
