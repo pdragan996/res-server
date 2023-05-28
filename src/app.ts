@@ -3,6 +3,7 @@ import bodyParser from 'body-parser';
 import cors from 'cors';
 import { connect } from './db';
 import userRoutes from './routes/userRoutes';
+import loginRoutes from './routes/loginRoutes';
 import restaurantsRoutes from './routes/restaurantsRoutes';
 
 class App {
@@ -24,6 +25,7 @@ class App {
     // set up routes
     this.app.use('/users', userRoutes);
     this.app.use('/restaurants', restaurantsRoutes);
+    this.app.use('/login', loginRoutes);
   }
 }
 

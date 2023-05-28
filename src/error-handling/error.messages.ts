@@ -5,7 +5,8 @@ export const APP_ERROR_MESSAGES = {
 export const USER_ERROR_MESSAGES = {
   USER_EXISTS: 'User already exists.',
   USERNAME_EXISTS: 'This user is already taken.',
-  NOT_EXISTS: 'User with this id not exists.',
+  WRONG_PASSWORD: 'Password is wrong. Try again.',
+  NOT_EXISTS: 'User not exists.',
   CREATE_FAILED: 'You cannot create user.',
   CREATE_HASH: 'Failed to create hash.',
 }
