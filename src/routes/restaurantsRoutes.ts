@@ -15,6 +15,17 @@ router.get('/', async (req: Request, res: Response) => {
   }
 });
 
+router.get('/random', async (req: Request, res: Response) => {
+  try {
+     const randomRestaurant = await restaurantsRepository.getRandomRestaurant();
+     res.json(randomRestaurant);
+  } catch (error: any) {
+    console.log(error);
+    res.status(500).send('You cannot fetch random restaurant')
+  }
+});
+
+
 router.get('/:id', async (req: Request, res: Response) => {
   try {
     const id = req.params.id;

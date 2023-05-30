@@ -14,6 +14,17 @@ export class RestaurantsRepository {
     return newRestaurant.save();
   }
 
+  async getRandomRestaurant(): Promise<Restaurant> {
+    try {
+      const count = await RestaurantModel.countDocuments();
+      const randomNum = Math.floor(Math.random() * count);
+      return await RestaurantModel.findOne().skip(randomNum).limit(1);
+    } catch (error: any) {
+      console.log(error);
+      throw error;
+    }
+  }
+
   async update(id: string, restaurant: Restaurant): Promise<Restaurant | null> {
     return RestaurantModel.findByIdAndUpdate(id, restaurant);
   }
